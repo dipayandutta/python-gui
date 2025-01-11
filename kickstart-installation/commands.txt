@@ -1,0 +1,41 @@
+    1  dnf install vsftpd
+    2  vim /etc/vsftpd/vsftpd.conf 
+    3  systemctl start vsftpd
+    4  systemctl enable vsftpd.service --now
+    5  yum install dhcpd*
+    6  yum install dhcp*
+    7  cat /root/anaconda-ks.cfg 
+    8  ip a s
+    9  mkdir /rhel9.4;cd /rhel9.4
+   10  ls -ltr
+   11  cd /root/
+   12  ls -ltr
+   13  mount -o loop rhel-9.4-x86_64-boot.iso /rhel9.4/
+   
+   32  cp -r rhel9.4/ /var/ftp/pub/
+   33  ls -ltr /var/ftp/pub/
+   34  cp /usr/share/doc/dhcp-server/dhcpd.conf.example /etc/dhcp/dhcpd.conf 
+   35  vim /etc/dhcp/dhcpd.conf 
+   36  dhcpd
+   37  systemctl status dhcpd
+   38  systemctl start dhcpd
+   39  systemctl enable dhcpd
+   40  firewall-cmd --state
+   41  firewall-cmd --permanent --add-service={ftp,dhcp}
+   42  firewall-cmd --reload
+   43  firewall-cmd --list-services
+   44  mkdir -p /var/ftp/pub/ks
+   45  cp /root/anaconda-ks.cfg /var/ftp/pub/ks/
+   46  chmod 644 /var/ftp/pub/ks/anaconda-ks.cfg 
+   47  ls -ltr /var/ftp/pub/ks/anaconda-ks.cfg 
+   48  cd /var/ftp/pub/ks/
+   49  ls -ltr
+   50  mv anaconda-ks.cfg ks.cfg
+   51  ls -ltr
+   52  vim ks.cfg 
+   53  ksvalidator
+   54  ksvalidator ks.cfg 
+   55  ip a s
+   56  vim /etc/vsftpd/vsftpd.conf 
+   57  systemctl restart vsftpd
+   
